@@ -1,0 +1,51 @@
+# Sistema de Gestão de Estoque - DataCode Solutions
+
+estoque = {
+    "Notebook": {"quantidade": 15, "preco": 3299.90},
+    "Mouse": {"quantidade": 45, "preco": 89.90},
+    "Teclado": {"quantidade": 30, "preco": 149.90}
+}
+
+while True:
+    print("\n=== SISTEMA DE GESTÃO DE ESTOQUE ===")
+    print("1 - Visualizar Estoque Atual")
+    print("2 - Registrar Entrada de Produto")
+    print("3 - Registrar Saída de Produto")
+    print("4 - Sair do Sistema")
+    
+    opcao = input("\nDigite o número da opção desejada: ")
+
+    if opcao == "1":
+        print("\n--- ESTOQUE ATUAL ---")
+        for produto, info in estoque.items():
+            print(f"{produto}: {info['quantidade']} unidades - R$ {info['preco']:.2f}")
+    
+    elif opcao == "2":
+        produto = input("Digite o nome do produto: ")
+        quantidade = int(input("Digite a quantidade a ser adicionada: "))
+        
+        if produto in estoque:
+            estoque[produto]['quantidade'] += quantidade
+            print(f"Entrada registrada! Novo estoque de {produto}: {estoque[produto]['quantidade']} unidades.")
+        else:
+            print("Produto não encontrado.")
+    
+    elif opcao == "3":
+        produto = input("Digite o nome do produto: ")
+        quantidade = int(input("Digite a quantidade a ser retirada: "))
+        
+        if produto in estoque:
+            if estoque[produto]['quantidade'] >= quantidade:
+                estoque[produto]['quantidade'] -= quantidade
+                print(f"Saída registrada! Estoque restante de {produto}: {estoque[produto]['quantidade']} unidades.")
+            else:
+                print("Estoque insuficiente para esta saída.")
+        else:
+            print("Produto não encontrado.")
+    
+    elif opcao == "4":
+        print("Encerrando o sistema. Até logo!")
+        break
+    
+    else:
+        print("Opção inválida! Por favor, digite um número entre 1 e 4.")
