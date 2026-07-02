@@ -15,7 +15,7 @@ print ("o lucro da loja no primeiro mes foi de", lucro1,"e no segundo mes foi de
 margem_lucro = lucro2 / faturamento * 100
 print(f"a margem de lucro é {margem_lucro:.1f}%")
 
-meta = 39.8
+meta = 40
 if margem_lucro >= meta:
     print("meta atingida")
 else:
